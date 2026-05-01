@@ -1,0 +1,388 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+    --background: 1 0 0;
+    --foreground: 0.145 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.145 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.145 0 0;
+    --primary: 0.205 0 0;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.97 0 0;
+    --secondary-foreground: 0.205 0 0;
+    --muted: 0.97 0 0;
+    --muted-foreground: 0.556 0 0;
+    --accent: 0.97 0 0;
+    --accent-foreground: 0.205 0 0;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.922 0 0;
+    --input: 0.922 0 0;
+    --ring: 0.708 0 0;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+}
+
+* {
+  cursor: auto;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 32s linear infinite;
+}
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Grain texture for dark sections */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1945;
+}
+::-webkit-scrollbar-thumb {
+  background: #c8dc00;
+  border-radius: 3px;
+}
+
+/* Focus styles */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #c8dc00;
+  outline-offset: 2px;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   ABOUT SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+/* Tablet: 641px – 768px */
+@media (max-width: 768px) {
+  .about-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .about-cards > *:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .mission-vision {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .mission-vision-heading {
+    font-size: 26px !important;
+  }
+
+  .about-ghost-number {
+    font-size: 160px !important;
+  }
+}
+
+/* Mobile: up to 640px */
+@media (max-width: 640px) {
+  .about-section {
+    padding: 60px 0 !important;
+  }
+
+  .about-inner {
+    padding: 0 16px !important;
+  }
+
+  .about-split {
+    flex-direction: column !important;
+    gap: 32px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .about-left {
+    flex: unset !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  .about-right {
+    flex: unset !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+
+  .about-cards {
+    grid-template-columns: 1fr !important;
+    margin-bottom: 48px !important;
+  }
+
+  .about-cards > *:last-child {
+    grid-column: auto !important;
+  }
+
+  .mission-vision {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .mission-vision-heading {
+    font-size: 22px !important;
+  }
+
+  .about-ghost-number {
+    font-size: 120px !important;
+    top: -20px !important;
+    right: -10px !important;
+  }
+}
+
+/* ============================================
+   HERO SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .hero-main-content {
+    flex-direction: column !important;
+    padding: 80px 20px 40px !important;
+    align-items: flex-start !important;
+  }
+
+  .hero-left-col {
+    flex: unset !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .hero-stats {
+    gap: 20px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .hero-stat-num {
+    font-size: 32px !important;
+  }
+}
+
+/* ============================================
+   COURSES SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .courses-inner {
+    padding: 0 16px !important;
+  }
+
+  .courses-cards-wrap {
+    max-width: 100% !important;
+  }
+
+  .course-card {
+    flex-direction: column !important;
+    min-height: unset !important;
+  }
+
+  .course-card-panel {
+    width: 100% !important;
+    min-height: 80px !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 16px 20px !important;
+    gap: 16px !important;
+  }
+
+  .course-card-num {
+    font-size: 48px !important;
+  }
+
+  .course-card-body {
+    padding: 24px 20px !important;
+  }
+
+  .course-curriculum-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================
+   SYLLABUS SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .syllabus-section {
+    padding: 60px 0 !important;
+  }
+
+  .syllabus-inner {
+    padding: 0 16px !important;
+  }
+
+  .syllabus-layout {
+    flex-direction: column !important;
+  }
+
+  .syllabus-card {
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .syllabus-card-header {
+    flex-wrap: wrap !important;
+  }
+
+  .syllabus-card-title {
+    font-size: 15px !important;
+  }
+
+  .syllabus-item-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Mobile tab strip for Syllabus */
+.syllabus-mobile-tabs {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.syllabus-mobile-tabs::-webkit-scrollbar {
+  display: none;
+}
+.syllabus-mobile-tab-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(26, 43, 140, 0.18);
+  background: white;
+  font-family: Montserrat, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #3a4a7a;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.syllabus-mobile-tab-btn.active {
+  background: #c8dc00;
+  border-color: #c8dc00;
+  color: #0d1945;
+  font-weight: 700;
+}
+
+/* ============================================
+   CONTACT SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .contact-outer {
+    padding: 40px 16px 0 !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .contact-cta-card {
+    padding: 36px 24px !important;
+    border-radius: 20px !important;
+  }
+
+  .contact-cta-title {
+    font-size: 24px !important;
+  }
+}
+
+/* ============================================
+   INTERNSHIP SECTION — RESPONSIVE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+  .internship-section {
+    padding: 60px 0 !important;
+  }
+
+  .internship-inner {
+    padding: 0 16px !important;
+  }
+
+  .internship-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+
+  .internship-milestone-card {
+    padding: 20px 16px !important;
+  }
+
+  .internship-timeline {
+    padding-left: 0 !important;
+  }
+}
